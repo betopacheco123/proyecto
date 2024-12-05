@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="box">
+        <h1 class="title is-4"><%= patient ? "Editar Paciente" : "Agregar Nuevo Paciente" %></h1>
+        <form action="<%= patient ? `/patients/edit/${patient.id}` : '/patients/create' %>" method="POST">
+            <div class="field">
+                <label class="label" for="name">Nombre</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Nombre del paciente"
+                        value="<%= patient ? patient.name : '' %>"
+                        required
+                    />
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="email">Email</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Correo electrónico"
+                        value="<%= patient ? patient.email : '' %>"
+                        required
+                    />
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="phone">Teléfono</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        placeholder="Teléfono de contacto"
+                        value="<%= patient ? patient.phone : '' %>"
+                        required
+                    />
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" type="submit">Guardar</button>
+                </div>
+                <div class="control">
+                    <a href="/patients" class="button is-light">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

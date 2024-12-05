@@ -1,0 +1,68 @@
+<div class="container mt-5">
+    <div class="box">
+        <h1 class="title is-4">Pacientes</h1>
+
+        <!-- Tabla de Pacientes -->
+        <table class="table is-bordered is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% patients.forEach((patient, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= patient.name %></td>
+                        <td><%= patient.email %></td>
+                        <td><%= patient.phone %></td>
+                        <td>
+                            <a href="/patients/edit/<%= patient.id %>" class="button is-small is-info">Editar</a>
+                            <a href="/patients/delete/<%= patient.id %>" class="button is-small is-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Formulario para Agregar Paciente -->
+    <div class="box mt-5">
+        <h2 class="title is-5">Agregar Nuevo Paciente</h2>
+        <form action="/patients/create" method="POST">
+            <div class="field">
+                <label class="label" for="name">Nombre</label>
+                <div class="control">
+                    <input class="input" type="text" id="name" name="name" placeholder="Nombre del paciente" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="email">Email</label>
+                <div class="control">
+                    <input class="input" type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="phone">Teléfono</label>
+                <div class="control">
+                    <input class="input" type="text" id="phone" name="phone" placeholder="Teléfono de contacto" required>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" type="submit">Agregar Paciente</button>
+                </div>
+                <div class="control">
+                    <button class="button is-light" type="reset">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

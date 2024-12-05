@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <div class="box">
+        <h1 class="title is-4"><%= specialty ? "Editar Especialidad" : "Agregar Nueva Especialidad" %></h1>
+        <form action="<%= specialty ? `/specialties/edit/${specialty.id}` : '/specialties/create' %>" method="POST">
+            <div class="field">
+                <label class="label" for="name">Nombre</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Nombre de la especialidad"
+                        value="<%= specialty ? specialty.name : '' %>"
+                        required
+                    />
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" type="submit">Guardar</button>
+                </div>
+                <div class="control">
+                    <a href="/specialties" class="button is-light">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

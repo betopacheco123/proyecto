@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <div class="box">
+        <h1 class="title is-4"><%= medicalArea ? "Editar Área Médica" : "Agregar Nueva Área Médica" %></h1>
+        <form action="<%= medicalArea ? `/medical_areas/edit/${medicalArea.id}` : '/medical_areas/create' %>" method="POST">
+            <div class="field">
+                <label class="label" for="name">Nombre</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Nombre del área médica"
+                        value="<%= medicalArea ? medicalArea.name : '' %>"
+                        required
+                    />
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="description">Descripción</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        id="description"
+                        name="description"
+                        placeholder="Descripción del área médica"
+                    ><%= medicalArea ? medicalArea.description : '' %></textarea>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" type="submit">Guardar</button>
+                </div>
+                <div class="control">
+                    <a href="/medical_areas" class="button is-light">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="box">
+        <h1 class="title is-4">Citas Médicas</h1>
+
+        <table class="table is-bordered is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Paciente</th>
+                    <th>Doctor</th>
+                    <th>Fecha</th>
+                    <th>Notas</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% appointments.forEach((appointment, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= appointment.patient_name %></td>
+                        <td><%= appointment.doctor_name %></td>
+                        <td><%= appointment.appointment_date %></td>
+                        <td><%= appointment.notes %></td>
+                        <td>
+                            <a href="/appointments/edit/<%= appointment.id %>" class="button is-small is-info">Editar</a>
+                            <a href="/appointments/delete/<%= appointment.id %>" class="button is-small is-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <a href="/appointments/create" class="button is-link mt-3">Agendar Nueva Cita</a>
+    </div>
+</div>

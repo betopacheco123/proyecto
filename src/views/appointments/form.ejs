@@ -1,0 +1,59 @@
+<div class="container mt-5">
+    <div class="box">
+        <h1 class="title is-4"><%= appointment ? "Editar Cita Médica" : "Agendar Nueva Cita" %></h1>
+        <form action="<%= appointment ? `/appointments/edit/${appointment.id}` : '/appointments/create' %>" method="POST">
+            <div class="field">
+                <label class="label" for="patient_id">Paciente</label>
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select id="patient_id" name="patient_id" required>
+                            <% patients.forEach(patient => { %>
+                                <option value="<%= patient.id %>" <%= appointment && appointment.patient_id === patient.id ? "selected" : "" %>>
+                                    <%= patient.name %>
+                                </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="doctor_id">Doctor</label>
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select id="doctor_id" name="doctor_id" required>
+                            <% doctors.forEach(doctor => { %>
+                                <option value="<%= doctor.id %>" <%= appointment && appointment.doctor_id === doctor.id ? "selected" : "" %>>
+                                    <%= doctor.name %>
+                                </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="appointment_date">Fecha</label>
+                <div class="control">
+                    <input class="input" type="datetime-local" id="appointment_date" name="appointment_date" value="<%= appointment ? appointment.appointment_date : '' %>" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="notes">Notas</label>
+                <div class="control">
+                    <textarea class="textarea" id="notes" name="notes" placeholder="Notas adicionales"><%= appointment ? appointment.notes : '' %></textarea>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" type="submit">Guardar</button>
+                </div>
+                <div class="control">
+                    <a href="/appointments" class="button is-light">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
